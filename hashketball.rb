@@ -252,27 +252,27 @@ player_stats.delete(:player_name)
 return player_stats
 end
 
-def big_shoe_rebounds
+# def big_shoe_rebounds
 
- hold_array2 = game_hash.select {|k,v| v[:players]}
- players_array2 = hold_array2.map {|k,v| v[:players]}
- players_array2.flatten!
-  array_of_size_integer = players_array2.map do |a|
-    a[:shoe]
+# hold_array2 = game_hash.select {|k,v| v[:players]}
+# players_array2 = hold_array2.map {|k,v| v[:players]}
+# players_array2.flatten!
+#   array_of_size_integer = players_array2.map do |a|
+#     a[:shoe]
  
-end
-array_of_size_integer.sort!
+# end
+# array_of_size_integer.sort!
 
-largest_player_shoe_size = array_of_size_integer[-1]
+# largest_player_shoe_size = array_of_size_integer[-1]
 
-players_array2.select do |p| 
-  if p[:shoe] == largest_player_shoe_size
-    return p[:rebounds]
-  end
-end
+# players_array2.select do |p| 
+#   if p[:shoe] == largest_player_shoe_size
+#     return p[:rebounds]
+#   end
+# end
 
 
-end
+# end
 
 
 
