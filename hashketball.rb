@@ -334,3 +334,12 @@ end
 #   return true
 # end
 # end
+def long_name_steals_a_ton?
+
+if player_with_longest_name == players.max_by{|player| player[:steals]}[:player_name]
+  return true
+end 
+
+end
+
+
