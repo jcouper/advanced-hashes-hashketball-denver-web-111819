@@ -298,23 +298,23 @@ players.max_by{|player| player[:points]}[:player_name]
 
 end
 
-# def winning_team
-# array_of_team_poitns = game_hash.map{|k,v| v[:players].map{|p| p[:points]}}
-#   team_point_totals =   array_of_team_poitns.map {|a|a.reduce(:+)}
-#     if team_point_totals[0] > team_point_totals[1]
-#       return "Brooklyn Nets"
-#     else 
-#       return "Charlotte Hornets"
-#     end
-# end
+def winning_team
+ array_of_team_poitns = game_hash.map{|k,v| v[:players].map{|p| p[:points]}}
+  team_point_totals =   array_of_team_poitns.map {|a|a.reduce(:+)}
+    if team_point_totals[0] > team_point_totals[1]
+      return "Brooklyn Nets"
+    else 
+      return "Charlotte Hornets"
+    end
+end
 
 
-def player_with_longest_name
-array_of_team_names = game_hash.map{|k,v| v[:players].map{|p| p[:player_name]}}
-array_of_team_names.flatten!
-array_of_team_names.max_by{|k| k.length}
+# def player_with_longest_name
+# array_of_team_names = game_hash.map{|k,v| v[:players].map{|p| p[:player_name]}}
+# array_of_team_names.flatten!
+# array_of_team_names.max_by{|k| k.length}
 
-end 
+# end 
 
 
 
