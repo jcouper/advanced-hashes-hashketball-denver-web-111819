@@ -276,7 +276,7 @@ end
 
 def big_shoe_rebounds
  largest_player_shoe = players.max_by{|player| player[:shoe]}
- binding.pry
+ largest_player_shoe[:rebounds]
 end
 
 def most_points_scored   #This works but I don't know how
