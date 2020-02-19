@@ -321,16 +321,16 @@ players.max_by{|player| player[:player_name].length}[:player_name]
 end
 
 
-def long_name_steals_a_ton?
+# def long_name_steals_a_ton?
   
-all_keys_and_values = game_hash.select {|k,v| v[:players]}
-players_array = all_keys_and_values.map {|k,v| v[:players]}
-players_array.flatten!
+# all_keys_and_values = game_hash.select {|k,v| v[:players]}
+# players_array = all_keys_and_values.map {|k,v| v[:players]}
+# players_array.flatten!
  
-player_with_most_steals =  players_array.max_by{|k|  k[:steals]}
+# player_with_most_steals =  players_array.max_by{|k|  k[:steals]}
 
-if player_with_most_steals[:player_name] == player_with_longest_name
+# if player_with_most_steals[:player_name] == player_with_longest_name
 
-  return true
-end
-end
+#   return true
+# end
+# end
