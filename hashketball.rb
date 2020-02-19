@@ -279,18 +279,18 @@ def big_shoe_rebounds
  
 end
 
-def most_points_scored   #This works but I don't know how
+# def most_points_scored   #This works but I don't know how
   
-all_keys_and_values = game_hash.select {|k,v| v[:players]}
-players_array = all_keys_and_values.map {|k,v| v[:players]}
-players_array.flatten!
+# all_keys_and_values = game_hash.select {|k,v| v[:players]}
+# players_array = all_keys_and_values.map {|k,v| v[:players]}
+# players_array.flatten!
  
-top_scoring_player =  players_array.max_by{|k|  k[:points]}
+# top_scoring_player =  players_array.max_by{|k|  k[:points]}
 
-top_scoring_player[:player_name]
+# top_scoring_player[:player_name]
 
 
-end
+# end
 
 
 
