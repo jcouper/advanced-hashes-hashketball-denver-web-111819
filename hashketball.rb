@@ -294,7 +294,8 @@ end
 
 
 def most_points_scored
-players.max_by{|player| player[:points]}
+players.max_by{|player| player[:points]}[:name]
+
 end
 
 def winning_team
