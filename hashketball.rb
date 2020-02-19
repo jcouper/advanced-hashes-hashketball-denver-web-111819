@@ -117,85 +117,140 @@ end
 
 
 
-def num_points_scored(name)
+# def num_points_scored(name)
 
- home_away_team_info =  game_hash.map {|k, v| v[:players]} 
+# home_away_team_info =  game_hash.map {|k, v| v[:players]} 
  
- #collects all the players into two arrays
+# #collects all the players into two arrays
 
- one_array_of_player_hashes = home_away_team_info.flatten 
+# one_array_of_player_hashes = home_away_team_info.flatten 
  
- #flattens the :home array of hashes and the :away array of hashes into one array
+# #flattens the :home array of hashes and the :away array of hashes into one array
 
-selected_name_index = one_array_of_player_hashes.find_index{|i| i[:player_name] == name} 
+# selected_name_index = one_array_of_player_hashes.find_index{|i| i[:player_name] == name} 
 
-#finds the index of the player name passed in as a parameter
+# #finds the index of the player name passed in as a parameter
 
-selected_player_points = one_array_of_player_hashes[selected_name_index][:points] 
+# selected_player_points = one_array_of_player_hashes[selected_name_index][:points] 
 
-#locates the hash and :points value at that index in array
+# #locates the hash and :points value at that index in array
+
+# end
+
+def players 
+  game_hash.map{|k,v| v[:players]}.flatten!
 
 end
 
- def shoe_size(name)
-   home_away_team_info =  game_hash.map {|k, v| v[:players]} #collects all the players into two arrays
-
- one_array_of_player_hashes = home_away_team_info.flatten #flattens the :home array of hashes and the :away array of hashes into one array
-
-selected_name_index = one_array_of_player_hashes.find_index{|i| i[:player_name] == name} #finds the index of the player name passed in as a parameter
-
-selected_player_points = one_array_of_player_hashes[selected_name_index][:shoe] #locates the hash and :shoe value at that index in array
+def find_player(name)
+  players.find do |player|
+    player[:player_name] == name
+  end
   
- end
+
+end
+
+  def teams 
+  game_hash.values
+  end
+  
+  
+  
+  
+def num_points_scored(name)
+  find_player(name)[:points]
+end
+
+def shoe_size(name)
+  find_player(name)[:shoe]
+end
+
+# def shoe_size(name)
+#   home_away_team_info =  game_hash.map {|k, v| v[:players]} #collects all the players into two arrays
+
+# one_array_of_player_hashes = home_away_team_info.flatten #flattens the :home array of hashes and the :away array of hashes into one array
+
+# selected_name_index = one_array_of_player_hashes.find_index{|i| i[:player_name] == name} #finds the index of the player name passed in as a parameter
+
+# selected_player_points = one_array_of_player_hashes[selected_name_index][:shoe] #locates the hash and :shoe value at that index in array
+  
+# end
+
+# def team_colors(team_name)
+ 
+ 
+# game_hash.each do |team, entire_team_hash|
+#   if entire_team_hash[:team_name] == team_name
+#     return entire_team_hash[:colors]
+
+#   end
+
+# end
+ 
+# end
 
 def team_colors(team_name)
- 
- 
- game_hash.each do |team, entire_team_hash|
-  if entire_team_hash[:team_name] == team_name
-    return entire_team_hash[:colors]
+  teams.find do |team|
+    team[:team_name] == team_name
+  end[:colors]
 
-  end
-
- end
- 
- 
 end
 
+# def team_names
+#   game_hash.map{|k,v| v[:team_name]}
+# end
 
 def team_names
-  game_hash.map{|k,v| v[:team_name]}
+  teams.map do |team|
+  team[:team_name]
+  
+end
+  
 end
 
 
-
-
-def  player_numbers(team_name)
+# def  player_numbers(team_name)
  
- game_hash.map do |k,v|
-  if  v[:team_name]  == team_name
- return v[:players].map do |player|  
-   player[:number]
-    end
-  end 
-end
+# game_hash.map do |k,v|
+#   if  v[:team_name]  == team_name
+# return v[:players].map do |player|  
+#   player[:number]
+#     end
+#   end 
+# end
  
+# end
+
+
+
+def player_numbers(team_name)
+ selected_team = teams.find do |team|
+   team[:team_name] == team_name
+end[:players].map{|player| player[:number]}
+
 end
 
+
+
+
+# def player_stats(player)
+  
+# hold_array = game_hash.select {|k,v| v[:players]}
+# players_array = hold_array.map {|k,v| v[:players]}
+# players_array.flatten!
+# players_array.each do |a| 
+#   if a[:player_name]  == player 
+#     a.delete(:player_name)
+#     return a
+# end
+# end
+# end
 
 def player_stats(player)
-  
-hold_array = game_hash.select {|k,v| v[:players]}
-players_array = hold_array.map {|k,v| v[:players]}
-players_array.flatten!
- players_array.each do |a| 
-  if a[:player_name]  == player 
-    a.delete(:player_name)
-    return a
+player_stats = find_player(player)
+player_stats.delete(:player_name)
+return player_stats
 end
-end
-end
-
 
 def big_shoe_rebounds
 
@@ -265,9 +320,9 @@ all_keys_and_values = game_hash.select {|k,v| v[:players]}
 players_array = all_keys_and_values.map {|k,v| v[:players]}
 players_array.flatten!
  
-top_scoring_player =  players_array.max_by{|k|  k[:steals]}
+player_with_most_steals =  players_array.max_by{|k|  k[:steals]}
 
-if top_scoring_player[:player_name] == player_with_longest_name
+if player_with_most_steals[:player_name] == player_with_longest_name
 
   return true
 end
