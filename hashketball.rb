@@ -293,8 +293,9 @@ end
 # end
 
 
-
-
+def most_points_scored
+players.max_by{|player| player[:points]}
+end
 
 def winning_team
  array_of_team_poitns = game_hash.map{|k,v| v[:players].map{|p| p[:points]}}
